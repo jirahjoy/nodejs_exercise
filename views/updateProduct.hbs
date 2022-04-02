@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles.css">
+    <title>Edit Product</title>
+</head>
+<body>
+    <form action="/auth/editProductsItems" method="POST">
+        <h2>Edit a product</h2>
+        <fieldset>
+            <label for="">Product Id</label>
+            <input type="text" name="product_id" value="{{products.product_id}}" readonly>
+            <br>
+            <label for="">Product Name</label>
+            <input type="text" name="product_name" value="{{products.product_name}}">
+            <br>
+            <label for="">Description</label>
+             <input type="text" name="product_description" value="{{products.product_description}}">
+             <br>
+            <label for="">Quantity</label>
+             <input type="number" name="quantity" value="{{products.quantity}}" >
+             <br>
+            <label for="">Supplier</label>
+            <select name="supplier" multiple>
+              {{#each supplierList}}
+                    <option value={{this.supplier_id}} >{{this.supplier_name}}</option>
+              {{/each}} 
+            </select>
+            <br>
+            <button type="submit">Edit Product</button>
+        </fieldset>
+    </form>
+     {{#if message}}
+        <h4>{{message}}</h4>
+    {{/if}}
+    
+</body>
+</html>
+{{!-- {{if (selectedSupplier.includes(this.supplier_id)) 'selected' : '' --}}

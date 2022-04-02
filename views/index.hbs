@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Add Product</title>
+</head>
+<body>
+    <form action="/auth/addProduct" method="POST">
+        <h2>Add a product</h2>
+        <fieldset>
+            <label for="">Product Name</label>
+            <input type="text" name="product_name" >
+            <br>
+            <label for="">Description</label>
+             <input type="text" name="product_description" >
+             <br>
+            <label for="">Quantity</label>
+             <input type="number" name="quantity" >
+             <br>
+            <label for="">Supplier</label>
+            <br>
+            <select name="supplier" multiple>
+            {{#each suppliers}}
+                <option value={{this.supplier_id}}>{{this.supplier_name}}</option>
+            {{/each}}  
+                {{!-- <option value="1">Samsung</option>
+                <option value="2">Phillips</option>
+                <option value="3">Xiaomi</option>
+                <option value="4">CDR King</option>
+                <option value="5">Apple</option>
+                <option value="6">Lg</option> --}}
+            </select>
+            <br>
+            <button type="submit">Add Product</button>
+        </fieldset>
+        <button><a href="/auth/getList">View Product</a></button>
+    </form>
+
+
+     {{#if message}}
+        <h4>{{message}}</h4>
+    {{/if}}
+</body>
+</html>
